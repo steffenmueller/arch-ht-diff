@@ -113,7 +113,7 @@ intrinsic StollBound( E::CrvEll : Epsilon := 10^-3, Precision := 30, Geometric :
           "The curve must be defined over an absolute extension of the rationals.";
   end if;
   r,s := Signature(K); 
-  // Take into accound that complex conjugate embeddings give the same contribution
+  // Take into account that complex conjugate embeddings give the same contribution
   weights := [ 1: i in [1..r] ] cat [ 2: i in [r+1..r+s] ]; 
 
   // Compute the upper bound for all archimedean places
