@@ -81,11 +81,11 @@ function stoll_bound_ith_embedding( E, i : eps := 10^-3, prec := 30, geometric :
   n := 1; 
   repeat  // Do at least one iteration.
     old_bound := bound;
-    assert old_bound le bound;  // The quality of the bound should not decrease.
     vn := phi(vn); // Perform the iteration step.
     vprintf Height, 3 : "phi^%o(1,1) = %o.\n", n+1, vn;
     n +:=  1;
     bound := (4^n)/(4^n -1) * Log(Maximum([ Abs(v) : v in vn ]));
+    assert old_bound ge bound;  // The quality of the bound should not decrease.
     vprintf Height, 2 : "New bound = %o.\n", bound;
   until old_bound - bound lt eps; // Stop when sufficiently close to limit.
   vprintf Height, 2 : "Used %o iterations for refinement.\n", n-1;
